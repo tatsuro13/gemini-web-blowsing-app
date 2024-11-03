@@ -13,6 +13,9 @@ If you are developing a production application, we recommend updating the config
 
 - Configure the top-level `parserOptions` property like this:
 
+### gitHub pages
+https://tatsuro13.github.io/gemini-web-browsing-app/
+
 ```js
 export default tseslint.config({
   languageOptions: {
