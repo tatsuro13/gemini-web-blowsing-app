@@ -7,11 +7,7 @@ export default defineConfig({
   base: '/gemini-web-browsing-app/',
   server: {
     proxy: {
-      '/api': {
-        target: 'https://generativelanguage.googleapis.com',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
+      '/api': 'http://localhost:5000',
     },
   },
 })
