@@ -1,11 +1,11 @@
 import express, {Request, Response} from 'express';
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 2000;
 
 app.use(express.json());
 
-app.get('api/v1/hello', (req:Request, res: Response) => {
+app.get('api/hello', (req:Request, res: Response) => {
     res.json({ message: 'Hello World!' });
 });
 

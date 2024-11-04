@@ -6,8 +6,9 @@ export default defineConfig({
   plugins: [react()],
   base: '/gemini-web-browsing-app/',
   server: {
+    port: 9000,
     proxy: {
-      '/api': 'http://localhost:5000',
+      '/api': 'http://localhost:2000',
     },
   },
 })
