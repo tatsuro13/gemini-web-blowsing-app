@@ -1,7 +1,8 @@
-import express, {Request, Response} from 'express';
+import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import { getGeminiAnswer } from './services/getGeminiAnswer';
+import type { Request, Response } from 'express';
 
 dotenv.config();
 
@@ -20,8 +21,8 @@ app.get('/api/hello', (req:Request, res: Response) => {
     res.json({ message: 'Hello World!' });
 });
 
-app.get('/api/gemini', (req:Request, res: Response) => {
-    const result = getGeminiAnswer(req.body);
+app.get('/api/gemini', async(req:Request, res: Response) => {
+    const result = await getGeminiAnswer(req.body);
     res.json(result);
 });
 
