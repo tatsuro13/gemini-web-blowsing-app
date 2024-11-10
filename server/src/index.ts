@@ -21,9 +21,16 @@ app.get('/api/hello', (req:Request, res: Response) => {
     res.json({ message: 'Hello World!' });
 });
 
-app.get('/api/gemini', async(req:Request, res: Response) => {
-    const result = await getGeminiAnswer(req.body);
-    res.json(result);
+app.post('/api/gemini', async(req:Request, res: Response) => {
+    try {
+        const { question } = req.body;
+        const answer = await getGeminiAnswer(question);
+        res.json({ answer });
+    } catch (error) {
+        console.error('Error getting Gemini answer:', error);
+        res.status(500).json({ error: 'Error getting Gemini answer' });
+    }
+    
 });
 
 app.listen(PORT, () => {

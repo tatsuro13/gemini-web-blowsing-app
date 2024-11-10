@@ -6,12 +6,13 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 const apiKey: string = process.env.GEMINI_API_KEY as string;
+
 // https://developers.googleblog.com/en/gemini-api-and-ai-studio-now-offer-grounding-with-google-search/
 // https://ai.google.dev/gemini-api/docs/grounding?lang=node
 
-export const getGeminiAnswer = async (req: Request) => {
+export const getGeminiAnswer = async (question:string) => {
     console.log('getGeminiAnswer')
-    console.log(req)
+    console.log(question)
     try{
         const genAI = new GoogleGenerativeAI(apiKey);
         const model = genAI.getGenerativeModel(
@@ -31,11 +32,12 @@ export const getGeminiAnswer = async (req: Request) => {
         {apiVersion: "v1beta"}
         )
 
-        const prompt = "日本の首都は?"
-        const result = await model.generateContent(prompt)
+        // const prompt = {};
+        const result = await model.generateContent(question)
 
         return result.response.text() 
         } catch (error) {
             console.error('Error generating content:', error);
+            throw error;
         }
 }
